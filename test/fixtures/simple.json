@@ -3,5 +3,7 @@
   "money": 125.50,
   "title": "Simple JSON title",
   "boolean": true,
-  "datetime": "2010-10-08 17:59:46"
+  "datetime": "2010-10-08 17:59:46",
+  "date": "2016-08-22 19:34:03",
+  "time": "2016-08-23 19:56:47"
 }

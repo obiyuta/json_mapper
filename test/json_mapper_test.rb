@@ -46,6 +46,8 @@ class JSONMapperTest < Test::Unit::TestCase
       model.title.should == "Simple JSON title"
       model.boolean.should == true
       model.datetime.should == Date.parse("2010-10-08 17:59:46")
+      model.date.should == Date.parse("2016-08-22 19:34:03")
+      model.time.should == Time.parse("2016-08-23 19:56:47")
     end
 
     should "assign value from different sources into an attribute" do

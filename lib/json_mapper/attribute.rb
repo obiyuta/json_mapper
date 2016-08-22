@@ -41,6 +41,8 @@ class Attribute
       end
     elsif self.type == Boolean then return %w(true t 1).include?(value.to_s.downcase)
     elsif self.type == DateTime then return Date.parse(value.to_s)
+    elsif self.type == Date then return Date.parse(value.to_s)
+    elsif self.type == Time then return Time.parse(value.to_s)
     else
 
       # If our type is a JSONMapper instance, delegate the

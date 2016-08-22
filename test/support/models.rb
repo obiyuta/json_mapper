@@ -7,6 +7,8 @@ class SimpleModel
   json_attribute :title, String
   json_attribute :boolean, Boolean
   json_attribute :datetime, DateTime
+  json_attribute :date, Date
+  json_attribute :time, Time
 
 end
 
