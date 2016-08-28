@@ -53,6 +53,9 @@ module JSONMapper
     end
 
     def attributes
+      if superclass.respond_to?(:attributes)
+        @attributes[to_s].concat superclass.attributes
+      end
       @attributes[to_s] || []
     end
 

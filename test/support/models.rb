@@ -28,3 +28,11 @@ class ComplexModel
   json_attribute :self_referential, "self", SimpleModel
 
 end
+
+class SimpleChildModel < SimpleModel
+
+  include JSONMapper
+
+  json_attribute :simple_id, :id, Integer
+
+end
