@@ -151,6 +151,14 @@ class JSONMapperTest < Test::Unit::TestCase
 
     end
 
+    should "assign nil into an attribute when an array assign into an attribute (not attributes)" do
+
+      json = '{ "id": [{"id":1},{"id":2}] }'
+      model = ComplexModel.parse(json)
+      model.id.should be nil
+
+    end
+
     context "inheritance a super class attributes" do
       should "parse simple json structure into a ruby object" do
         model = SimpleChildModel.parse(fixture_file("simple.json"))

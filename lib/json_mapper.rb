@@ -84,7 +84,7 @@ module JSONMapper
       # Set the JSON data for this instance
       self.json_data = json
       # @json_data[to_s] = json
-      
+
       # Create a new instance of ourselves
       instance = new
 
@@ -144,7 +144,7 @@ module JSONMapper
     private
 
     def get_json_structure(data, options = {})
-      
+
       # Parse the data into a hash
       json = Parser.parse(data)
 
@@ -198,7 +198,7 @@ module JSONMapper
       end
 
       return source_attributes, type, options
- 
+
     end
 
     def is_mapped?(attribute, json)
@@ -219,7 +219,7 @@ module JSONMapper
             return true
           end
 
-        elsif json.key?(source_attribute)
+        elsif json.is_a?(Hash) && json.key?(source_attribute)
           return true
         end
       end
@@ -228,12 +228,12 @@ module JSONMapper
     end
 
     def mapping_value(attribute, json)
-      
+
       # Return nil if our JSON isn't a hash or an array
       return nil unless json.is_a?(Hash) || json.is_a?(Array)
 
       attribute.source_attributes.each do |source_attribute|
-        
+
         # If the source attribute is a hash, do a key/value lookup on the json data
         if source_attribute.is_a?(Hash)
 
