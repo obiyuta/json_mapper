@@ -54,7 +54,11 @@ module JSONMapper
 
     def attributes
       if superclass.respond_to?(:attributes)
-        @attributes[to_s].concat superclass.attributes
+        if @attributes[to_s].nil?
+          @attributes[to_s] = superclass.attributes
+        else
+          @attributes[to_s].concat superclass.attributes
+        end
       end
       @attributes[to_s] || []
     end
@@ -88,7 +92,8 @@ module JSONMapper
       instance = new
 
       # Instantiate all AttributeList instances
-      attributes.each do |attribute|
+      attrs = attributes
+      attrs.each do |attribute|
         if attribute.is_a?(AttributeList)
           instance.send("#{attribute.name}=", attribute.dup)
         end
@@ -96,7 +101,7 @@ module JSONMapper
 
       # Traverse all defined attributes and assign data from the
       # JSON data structure
-      attributes.each do |attribute|
+      attrs.each do |attribute|
         if is_mapped?(attribute, json)
           value = mapping_value(attribute, json)
           if attribute.is_a?(AttributeList)

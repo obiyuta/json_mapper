@@ -172,7 +172,9 @@ class JSONMapperTest < Test::Unit::TestCase
     end
 
     context "inheritance a super class attributes" do
+
       should "parse simple json structure into a ruby object" do
+
         model = SimpleChildModel.parse(fixture_file("simple.json"))
         model.simple_id.should be 1
         model.id.should be 1
@@ -182,6 +184,15 @@ class JSONMapperTest < Test::Unit::TestCase
         model.datetime.should be Date.parse("2010-10-08 17:59:46")
         model.date.should be Date.parse("2016-08-22 19:34:03")
         model.time.should be Time.parse("2016-08-23 19:56:47")
+
+      end
+
+      should "assign array" do
+
+        json = '{"id":3, "simples": [{ "id" : 1 },{ "id" : 2 }]}'
+        model = ComplexChildModel.parse(json)
+        model.simples.count.should be 2
+
       end
     end
 

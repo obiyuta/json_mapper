@@ -36,3 +36,11 @@ class SimpleChildModel < SimpleModel
   json_attribute :simple_id, :id, Integer
 
 end
+
+class ComplexChildModel < ComplexModel
+
+  include JSONMapper
+
+  json_attribute :id, Integer
+
+end
