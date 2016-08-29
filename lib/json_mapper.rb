@@ -53,13 +53,13 @@ module JSONMapper
     end
 
     def attributes
-      if superclass.respond_to?(:attributes)
-        if @attributes[to_s].nil?
-          @attributes[to_s] = superclass.attributes
-        else
-          @attributes[to_s].concat superclass.attributes
-        end
-      end
+      # if superclass.respond_to?(:attributes)
+      #   if @attributes[to_s].nil?
+      #     @attributes[to_s] = superclass.attributes
+      #   else
+      #     @attributes[to_s].concat superclass.attributes
+      #   end
+      # end
       @attributes[to_s] || []
     end
 
