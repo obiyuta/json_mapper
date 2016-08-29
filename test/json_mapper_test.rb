@@ -159,6 +159,18 @@ class JSONMapperTest < Test::Unit::TestCase
 
     end
 
+    should "generate a model with empty value when parse an array json into a model" do
+
+      json = '[{ "id" : 1 },{ "id" : 2 }]'
+      model = ComplexModel.parse(json)
+      model.id.should be nil
+      model.simple.should be nil
+      model.integers.should be []
+      model.simples.should be []
+      model.delimited.should be []
+
+    end
+
     context "inheritance a super class attributes" do
       should "parse simple json structure into a ruby object" do
         model = SimpleChildModel.parse(fixture_file("simple.json"))

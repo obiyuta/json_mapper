@@ -64,7 +64,6 @@ module JSONMapper
     # end
 
     def parse(data, options = {})
-
       return nil if data.nil? || data == ""
       json = get_json_structure(data, options)
       parse_json(json)
@@ -207,7 +206,7 @@ module JSONMapper
       return true if attribute.self_referential?
 
       # Return false if our JSON isn't a hash or an array
-      return false unless json.is_a?(Hash) || json.is_a?(Array)
+      return false unless json.is_a?(Hash)
 
       attribute.source_attributes.each do |source_attribute|
 
@@ -219,7 +218,7 @@ module JSONMapper
             return true
           end
 
-        elsif json.is_a?(Hash) && json.key?(source_attribute)
+        elsif json.key?(source_attribute)
           return true
         end
       end
@@ -230,7 +229,7 @@ module JSONMapper
     def mapping_value(attribute, json)
 
       # Return nil if our JSON isn't a hash or an array
-      return nil unless json.is_a?(Hash) || json.is_a?(Array)
+      return nil unless json.is_a?(Hash)
 
       attribute.source_attributes.each do |source_attribute|
 
