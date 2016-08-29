@@ -189,7 +189,7 @@ class JSONMapperTest < Test::Unit::TestCase
 
       should "assign array" do
 
-        json = '{"id":3, "simples": [{ "id" : 1 },{ "id" : 2 }]}'
+        json = '{ "id" : 1, "simples": [{ "id" : 2 },{ "id" : 3 }] }'
         model = ComplexChildModel.parse(json)
         model.simples.count.should be 2
 
