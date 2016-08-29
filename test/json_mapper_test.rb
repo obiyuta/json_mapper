@@ -153,9 +153,9 @@ class JSONMapperTest < Test::Unit::TestCase
 
     should "assign nil into an attribute when an array assign into an attribute (not attributes)" do
 
-      json = '{ "id": [{"id":1},{"id":2}] }'
+      json = '{ "simple": [{ "id" : 1 },{ "id" : 2 }] }'
       model = ComplexModel.parse(json)
-      model.id.should be nil
+      model.simple.id.should be nil
 
     end
 
