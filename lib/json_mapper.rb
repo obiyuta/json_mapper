@@ -105,7 +105,7 @@ module JSONMapper
         if is_mapped?(attribute, json)
           value = mapping_value(attribute, json)
           if attribute.is_a?(AttributeList)
-            value = [ value ] unless value.is_a?(Array)
+            value = [ value ].compact unless value.is_a?(Array)
             value.each do |v|
 
               list_attribute = build_attribute(attribute.name, attribute.type, attribute.options)
